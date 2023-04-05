@@ -1,2 +1,1 @@
-node_modules
-packages-lock
+node_modules/*
