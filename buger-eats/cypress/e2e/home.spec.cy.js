@@ -1,3 +1,8 @@
+/** Teste automatizado com cypress
+ * Definindo view port
+ * Acesssando URL de teste
+ * Validando elemento h1 da página
+ */
 describe("home page", () => {
   it("app deve estar online", () => {
     cy.viewport(1440, 900);
