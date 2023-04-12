@@ -1,5 +1,8 @@
-/**Validação
- * Checkinpoint
+/**
+ * Função view port - redimensioando tamanho da janela do site
+ * Função visit - acessa a página principal do site
+ * Função get - subfunção click passando um localizador para encontrar o botão
+ * Checkipoint - para garantir a página correta
  */
 
 describe("cadastro", () => {
@@ -18,10 +21,39 @@ describe("cadastro", () => {
       cpf: "09354312356",
       email: "rodrigo@gmail.com",
       whatsapp: "11985785690",
+      endereco: {
+        cep: "04534011",
+        rua: "Rua Joaquim Floriano",
+        numero: "1000",
+        complemento: "Apt 145",
+        bairro: "Itaim Bibi",
+        cidade_uf: "São Paulo/SP",
+      },
     };
     cy.get('input[name="name"]').type(entregador.nome);
     cy.get('input[name="cpf"]').type(entregador.cpf);
     cy.get('input[name="email"]').type(entregador.email);
     cy.get('input[name="whatsapp"]').type(entregador.whatsapp);
+
+    cy.get('input[name="postalcode"]').type(entregador.endereco.cep);
+    cy.get('input[type="button"][value="Buscar CEP"]').click();
+
+    cy.get('input[name="address-number"]').type(entregador.endereco.numero);
+    cy.get('input[name="address-details"]').type(
+      entregador.endereco.complemento
+    );
+
+    cy.get('input[name="address"]').should(
+      "have.value",
+      entregador.endereco.rua
+    );
+    cy.get('input[name="district"]').should(
+      "have.value",
+      entregador.endereco.bairro
+    );
+    cy.get('input[name="city-uf"]').should(
+      "have.value",
+      entregador.endereco.cidade_uf
+    );
   });
 });
