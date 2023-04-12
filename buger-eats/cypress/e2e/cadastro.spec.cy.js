@@ -1,8 +1,9 @@
-/**
+/** Prenchimento do formulário de cadastro
  * Função view port - redimensioando tamanho da janela do site
  * Função visit - acessa a página principal do site
  * Função get - subfunção click passando um localizador para encontrar o botão
  * Checkipoint - para garantir a página correta
+ * Espressões regulares básicas para encontrar elementos no HTML
  */
 
 describe("cadastro", () => {
@@ -29,7 +30,10 @@ describe("cadastro", () => {
         bairro: "Itaim Bibi",
         cidade_uf: "São Paulo/SP",
       },
+      metodo_entrega: "Moto",
+      cnh: "cnh-digital.jpg",
     };
+
     cy.get('input[name="name"]').type(entregador.nome);
     cy.get('input[name="cpf"]').type(entregador.cpf);
     cy.get('input[name="email"]').type(entregador.email);
@@ -55,5 +59,9 @@ describe("cadastro", () => {
       "have.value",
       entregador.endereco.cidade_uf
     );
+
+    cy.contains(".delivery-method li", entregador.metodo_entrega).click();
+
+    cy.get('input[accept^="image"]').attachFile("/image/" + entregador.cnh);
   });
 });
