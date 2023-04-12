@@ -1,11 +1,3 @@
-/** Prenchimento do formulário de cadastro
- * Função view port - redimensioando tamanho da janela do site
- * Função visit - acessa a página principal do site
- * Função get - subfunção click passando um localizador para encontrar o botão
- * Checkipoint - para garantir a página correta
- * Espressões regulares básicas para encontrar elementos no HTML
- */
-
 describe("cadastro", () => {
   it("Usuário deve se tornar um entregador", () => {
     cy.viewport(1440, 900);
